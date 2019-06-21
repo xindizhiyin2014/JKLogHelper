@@ -1,0 +1,35 @@
+PODS:
+  - ICTextView (2.0.1)
+  - JKDateHelper (0.1.0)
+  - JKLogHelper (0.1.0):
+    - ICTextView
+    - JKDateHelper
+    - JKSandBoxManager
+  - JKSandBoxManager (0.1.6.4)
+  - Kiwi (3.0.0)
+
+DEPENDENCIES:
+  - JKLogHelper (from `../`)
+  - Kiwi
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ICTextView
+    - JKDateHelper
+    - JKSandBoxManager
+    - Kiwi
+
+EXTERNAL SOURCES:
+  JKLogHelper:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ICTextView: 937aca5dd49e39e9cca41ababe8c55bf99c634fc
+  JKDateHelper: 5fbd3ff3e39b238f2ec7cc2002408022a05ed7da
+  JKLogHelper: 9cbbb043b9c318450fd081922d60d8f71cd01eb0
+  JKSandBoxManager: 82c9f56f87f0093dd010348748e11bbe88384794
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+
+PODFILE CHECKSUM: 78b7d3b4fa301ba7816c2428d9dd757e14b6d327
+
+COCOAPODS: 1.7.2

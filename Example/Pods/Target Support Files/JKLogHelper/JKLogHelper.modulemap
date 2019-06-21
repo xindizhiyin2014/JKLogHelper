@@ -1,0 +1,6 @@
+framework module JKLogHelper {
+  umbrella header "JKLogHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}

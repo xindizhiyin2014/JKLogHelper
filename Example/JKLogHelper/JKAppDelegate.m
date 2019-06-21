@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+//    freopen([kPathLog cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
     return YES;
 }
 

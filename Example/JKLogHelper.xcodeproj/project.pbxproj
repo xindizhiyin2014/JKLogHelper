@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0146B80DC4C47ED2C8023AE3 /* Pods_JKLogHelper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKLogHelper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		04A91EB8BF72234CBF4B14A9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		04A91EB8BF72234CBF4B14A9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4F68BBC25B2FEDFA7517D6AE /* Pods-JKLogHelper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKLogHelper_Example.debug.xcconfig"; path = "Target Support Files/Pods-JKLogHelper_Example/Pods-JKLogHelper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* JKLogHelper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKLogHelper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,8 +63,8 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		833FAFADAE1A2A8B0AB0CFCA /* Pods-JKLogHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKLogHelper_Example.release.xcconfig"; path = "Target Support Files/Pods-JKLogHelper_Example/Pods-JKLogHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8CEEA72293500FEE32269F37 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		A26CDEB0A10B431D310F356F /* JKLogHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = JKLogHelper.podspec; path = ../JKLogHelper.podspec; sourceTree = "<group>"; };
+		8CEEA72293500FEE32269F37 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A26CDEB0A10B431D310F356F /* JKLogHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JKLogHelper.podspec; path = ../JKLogHelper.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C8AAC8C05424562F59A59149 /* Pods-JKLogHelper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKLogHelper_Tests.release.xcconfig"; path = "Target Support Files/Pods-JKLogHelper_Tests/Pods-JKLogHelper_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F7E2A8CA4E0F5FB11816756E /* Pods_JKLogHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKLogHelper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -193,7 +193,6 @@
 				6BE15BBCBA4A53A52BD51187 /* Pods-JKLogHelper_Tests.debug.xcconfig */,
 				C8AAC8C05424562F59A59149 /* Pods-JKLogHelper_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -259,6 +258,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -303,11 +303,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JKLogHelper_Example/Pods-JKLogHelper_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ICTextView/ICTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/JKDateHelper/JKDateHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/JKLogHelper/JKLogHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/JKSandBoxManager/JKSandBoxManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKDateHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKLogHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKSandBoxManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
