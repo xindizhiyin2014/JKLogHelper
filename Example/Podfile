@@ -4,7 +4,7 @@ platform :ios, '8.0'
 
 target 'JKLogHelper_Example' do
   pod 'JKLogHelper', :path => '../'
-
+  
   target 'JKLogHelper_Tests' do
     inherit! :search_paths
 

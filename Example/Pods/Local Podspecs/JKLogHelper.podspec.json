@@ -20,9 +20,6 @@
   },
   "source_files": "JKLogHelper/Classes/**/*",
   "dependencies": {
-    "ICTextView": [
-
-    ],
     "JKDateHelper": [
 
     ],

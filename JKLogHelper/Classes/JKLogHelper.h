@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define LEFLog(fmt, ...) NSLog((@"%@, %s (%d) => " fmt), [JKLogHelper lastCallMethod], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JKLogHelper : NSObject
@@ -15,12 +17,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 
-+ (instancetype)shareInstance;
-
 /**
  start monitor the log and write the log to the file
  */
 + (void)start;
+
+/**
+ config the max num of the log file,default is 30
+
+ @param maxLogs default is 30
+ */
++ (void)configMaxLogFiles:(NSInteger)maxLogs;
 
 /**
  delete all the logFiles
@@ -35,11 +42,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSArray <NSString *>*)getLogFiles;
 
++ (NSString *)folderPath;
 
 /**
  open the logFile list
  */
 + (void)viewLog;
+
+/**
+can log the last method of the func
+thanks the author Lefe_x https://weibo.com/u/5953150140
+@return log
+*/
++ (NSString *)lastCallMethod;
 
 @end
 

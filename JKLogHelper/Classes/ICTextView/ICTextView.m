@@ -195,7 +195,22 @@ NS_INLINE BOOL ICCGFloatEqualOnScreen(CGFloat f1, CGFloat f2)
         shouldApplyCaretFix = NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0 && NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0;
         shouldApplyCharacterRangeAtPointFix = NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0 && NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_8_0;
         shouldApplyTextContainerFix = NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_7_0 && NSFoundationVersionNumber < NSFoundationVersionNumber_iOS_9_0;
+        
+        UIMenuItem *search = [[UIMenuItem alloc]initWithTitle:@"查询" action:@selector(search:)];
+        UIMenuController *menuController = [UIMenuController sharedMenuController];
+        [menuController setMenuItems:[NSArray arrayWithObject:search]];
+        [menuController setMenuVisible:NO];
+
     }
+}
+
+
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (action == @selector(search:) || action == @selector(copy:) || action == @selector(selectAll:)) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - Output
@@ -1073,6 +1088,22 @@ NS_INLINE BOOL ICCGFloatEqualOnScreen(CGFloat f1, CGFloat f2)
     [self scrollRectToVisible:rect animated:animated consideringInsets:considerInsets];
 }
 
+
+/**
+ 查询操作
+ 
+ @param sender UIMenuController 对象
+ */
+- (void)search:(id)sender{
+    [self copy:sender];
+    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+    NSString *selectedStr = pboard.string;
+    if (selectedStr) {
+        [self scrollToMatch:selectedStr searchDirection:ICTextViewSearchDirectionForward];
+    }
+    _searchCallback(selectedStr);
+    
+}
 #pragma clang diagnostic pop
 
 @end

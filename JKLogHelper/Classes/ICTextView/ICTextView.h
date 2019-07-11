@@ -78,6 +78,7 @@ typedef enum
  
  It also features some iOS 7+ specific improvements and bugfixes to the standard UITextView.
  */
+typedef void(^SearchCallBack)(NSString *selectedStr);
 @interface ICTextView : UITextView
 
 #pragma mark - Configuration
@@ -116,6 +117,8 @@ typedef enum
 
 /// Allows restricting search to a specific range (default = { 0, NSUIntegerMax }).
 @property (nonatomic) NSRange searchRange;
+
+@property (nonatomic, copy) SearchCallBack searchCallback;
 
 #pragma mark -- Performance --
 

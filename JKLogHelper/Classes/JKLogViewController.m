@@ -92,7 +92,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"log Message";
     [self updateTextViewInsetsWithKeyboardNotification:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateTextViewInsetsWithKeyboardNotification:)
@@ -124,8 +123,8 @@
     
     CGRect toolBarFrame = viewBounds;
     toolBarFrame.size.height = 34.0f;
-    
-    self.searchBar.frame = searchBarFrame;
+    CGFloat originY = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height;
+    self.searchBar.frame = CGRectMake(0, originY, [UIScreen mainScreen].bounds.size.width, 44.0f);
     self.toolBar.frame = toolBarFrame;
     self.textView.frame = viewBounds;
 }
@@ -208,7 +207,8 @@
 - (void)updateTextViewInsetsWithKeyboardNotification:(NSNotification *)notification
 {
     UIEdgeInsets newInsets = UIEdgeInsetsZero;
-    newInsets.top = self.searchBar.frame.size.height;
+    CGFloat originY = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height;
+    newInsets.top = self.searchBar.frame.size.height+ originY;
     
     if (notification)
     {

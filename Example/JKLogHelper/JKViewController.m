@@ -7,6 +7,7 @@
 //
 
 #import "JKViewController.h"
+#import <JKLogHelper/JKLogHelper.h>
 
 @interface JKViewController ()
 
@@ -18,6 +19,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"AAA");
+    NSLog(@"BBB");
+    self.view.backgroundColor = [UIColor whiteColor];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [self.view addGestureRecognizer:tap];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [self.view addGestureRecognizer:longPress];
+}
+
+- (void)tap:(UITapGestureRecognizer *)tap{
+    NSLog(@"ccc %@",[NSDate date]);
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)longpress{
+    [JKLogHelper viewLog];
 }
 
 - (void)didReceiveMemoryWarning

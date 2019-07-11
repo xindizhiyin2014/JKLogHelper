@@ -161,13 +161,11 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ICTextView/ICTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKDateHelper/JKDateHelper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKLogHelper/JKLogHelper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKSandBoxManager/JKSandBoxManager.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ICTextView/ICTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKDateHelper/JKDateHelper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKLogHelper/JKLogHelper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JKSandBoxManager/JKSandBoxManager.framework"

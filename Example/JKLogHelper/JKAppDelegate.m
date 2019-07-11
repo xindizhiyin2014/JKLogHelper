@@ -7,13 +7,21 @@
 //
 
 #import "JKAppDelegate.h"
+#import <JKLogHelper/JKLogHelper.h>
+#import "JKViewController.h"
+#import "JKSandBoxManager.h"
 
 @implementation JKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-//    freopen([kPathLog cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+    NSLog(@"%@",JKSandBoxPathDocument);
+    [JKLogHelper start];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    JKViewController *vc = [JKViewController new];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
