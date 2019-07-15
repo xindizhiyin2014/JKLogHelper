@@ -1,19 +1,19 @@
 {
   "name": "JKLogHelper",
-  "version": "0.1.0",
-  "summary": "A short description of JKLogHelper.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.1",
+  "summary": "this is a log file check search tool.",
+  "description": "this is a log file check search tool.it will update with the need",
   "homepage": "https://github.com/xindizhiyin2014/JKLogHelper",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "xindizhiyin2014": "jack18@same.com"
+    "xindizhiyin2014": "929097264@qq.com"
   },
   "source": {
     "git": "https://github.com/xindizhiyin2014/JKLogHelper.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "8.0"

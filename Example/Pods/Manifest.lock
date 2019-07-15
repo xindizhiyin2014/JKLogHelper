@@ -1,6 +1,6 @@
 PODS:
   - JKDateHelper (0.1.1)
-  - JKLogHelper (0.1.0):
+  - JKLogHelper (0.1.1):
     - JKDateHelper
     - JKSandBoxManager
   - JKSandBoxManager (0.1.6.4)
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JKDateHelper: 174b1cbe7d4959bc3dd8a3abbd0b2ac34e062ee5
-  JKLogHelper: 2fccf378f5c9a6159d43f79951661f726fdc8ed3
+  JKLogHelper: 8669e5d5acfd62c21b82877030ecb298e1d31b73
   JKSandBoxManager: 82c9f56f87f0093dd010348748e11bbe88384794
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
 

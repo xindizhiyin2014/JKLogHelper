@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 ## JKLogHelper
 
-Copyright (c) 2019 xindizhiyin2014 <jack18@same.com>
+Copyright (c) 2019 xindizhiyin2014 <929097264@qq.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -31,7 +31,9 @@
     tableView.delegate = self;
     tableView.tableFooterView = [UIView new];
     [self.view addSubview:tableView];
+    
     self.tableView = tableView;
+    
     
 }
 
@@ -56,6 +58,45 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     cell.textLabel.text = [self.datas objectAtIndex:indexPath.row];
     return cell;
+}
+
+#pragma mark - - - - UITableViewDelegate - - - -
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"分享" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * selectedIndexPath) {
+        NSString *fileName = [self.datas objectAtIndex:indexPath.row];
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@",[JKLogHelper folderPath],fileName];
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[NSString stringWithFormat:@"file://%@",filePath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        UIActivityViewController *activityController=[[UIActivityViewController alloc] initWithActivityItems:@[data] applicationActivities:nil];
+        activityController.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+            if (completed) {
+                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"分享成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [alertVC dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alertVC addAction:action];
+                [self presentViewController:alertVC animated:YES completion:nil];
+            }else{
+                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"分享失败" message:activityError.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [alertVC dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alertVC addAction:action];
+                [self presentViewController:alertVC animated:YES completion:nil];
+            }
+        };
+        
+         [self presentViewController:activityController animated:YES completion:nil];
+        
+    }];
+    shareAction.backgroundColor = [UIColor blueColor];
+    
+    
+    return @[shareAction];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
