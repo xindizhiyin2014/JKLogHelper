@@ -35,3 +35,14 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 # Pods/
+Example/Pods/JKDateHelper/JKDateHelper/Assets/en.lproj/Localizable.strings
+Example/Pods/JKDateHelper/JKDateHelper/Assets/zh-Hans.lproj/Localizable.strings
+Example/Pods/Target Support Files/JKDateHelper/JKDateHelper.debug.xcconfig
+Example/Pods/Target Support Files/JKDateHelper/JKDateHelper.release.xcconfig
+Example/Pods/Target Support Files/JKDateHelper/ResourceBundle-JKDateHelper-JKDateHelper-Info.plist
+Example/Pods/Target Support Files/JKLogHelper/JKLogHelper.debug.xcconfig
+Example/Pods/Target Support Files/JKLogHelper/JKLogHelper.release.xcconfig
+Example/Pods/Target Support Files/JKSandBoxManager/JKSandBoxManager.debug.xcconfig
+Example/Pods/Target Support Files/JKSandBoxManager/JKSandBoxManager.release.xcconfig
+Example/Pods/Target Support Files/Kiwi/Kiwi.debug.xcconfig
+Example/Pods/Target Support Files/Kiwi/Kiwi.release.xcconfig

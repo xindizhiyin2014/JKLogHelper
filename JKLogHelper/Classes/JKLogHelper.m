@@ -10,13 +10,14 @@
 #import <JKSandBoxManager/JKSandBoxManager.h>
 #import <JKDateHelper/JKDateHelper.h>
 
-
+static NSString * const kLogHelperFilesKey = @"kLogHelperFilesKey";
 @interface JKLogHelper()
 
 @property (nonatomic,copy) NSString *folderPath;
 @property (nonatomic,strong) NSLock *lock;
 @property (nonatomic,assign) BOOL isWritting; ///< is writting log to file
 @property (nonatomic,assign) NSInteger maxLogs;
+@property (nonatomic, strong) NSMutableArray *files;
 
 @end
 
@@ -28,20 +29,36 @@ static JKLogHelper *_logHelper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _logHelper = [[self alloc] init];
-        _logHelper.lock = [[NSLock alloc] init];
-        _logHelper.maxLogs = 30;
+        
+        
     });
     return _logHelper;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _lock = [[NSLock alloc] init];
+        _maxLogs = 10;
+        NSArray *array = [[NSUserDefaults standardUserDefaults] arrayForKey:kLogHelperFilesKey];
+        if (!array) {
+            array = @[];
+        }
+        _files = [NSMutableArray arrayWithArray:array];
+    }
+    return self;
 }
 
 + (void)start{
     [[JKLogHelper shareInstance].lock lock];
     if (![JKLogHelper shareInstance].isWritting) {
-        NSArray *logFiles = [self getLogFiles];
-        if (logFiles.count == [JKLogHelper shareInstance].maxLogs) {
-            NSString *fileName = logFiles.firstObject;
+        NSArray *logFiles = [self files];
+        while (logFiles.count >= [JKLogHelper shareInstance].maxLogs) {
+            NSString *fileName = logFiles.lastObject;
             NSString *logFilePath = [NSString stringWithFormat:@"%@/%@.log",[self folderPath],fileName];
             [JKSandBoxManager deleteFile:logFilePath];
+            [[JKLogHelper shareInstance].files removeObject:fileName];
         }
         JKDateSeperator *seperator = [JKDateSeperator new];
         seperator.yyyySeperator = @"-";
@@ -51,6 +68,9 @@ static JKLogHelper *_logHelper = nil;
         seperator.mmSeperator = @"-";
         
         NSString *fileName = [JKDateHelper fullTimeStrFromDate:[NSDate date] seperator:seperator];
+        [[JKLogHelper shareInstance].files insertObject:fileName atIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:[JKLogHelper shareInstance].files forKey:kLogHelperFilesKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         NSString *logFilePath = [NSString stringWithFormat:@"%@/%@.log",[self folderPath],fileName];
         freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
         [JKLogHelper shareInstance].isWritting = YES;
@@ -72,8 +92,12 @@ static JKLogHelper *_logHelper = nil;
 }
 
 + (NSArray <NSString *>*)getLogFiles{
-    NSArray *files = [JKSandBoxManager filesWithFolderAtPath:[JKLogHelper shareInstance].folderPath];
-    return files;
+    NSMutableArray *array = [NSMutableArray new];
+    for (NSString *fileName in [JKLogHelper shareInstance].files) {
+        NSString *logFilePath = [NSString stringWithFormat:@"%@/%@.log",[self folderPath],fileName];
+        [array addObject:logFilePath];
+    }
+    return array;
 }
 
 + (NSString *)folderPath{
@@ -84,6 +108,7 @@ static JKLogHelper *_logHelper = nil;
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     JKLogFileListViewController *logFileListVC = [JKLogFileListViewController new];
     UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:logFileListVC];
+    naVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [vc presentViewController:naVC animated:YES completion:nil];
 }
 
@@ -106,6 +131,11 @@ static JKLogHelper *_logHelper = nil;
     NSTextCheckingResult *checkResult = [[express matchesInString:secondSymbol options:NSMatchingReportCompletion range:NSMakeRange(0, secondSymbol.length)] lastObject];
     NSString *findStr = [secondSymbol substringWithRange:checkResult.range];
     return findStr ?: @"";
+}
+
++ (NSArray *)files
+{
+    return [JKLogHelper shareInstance].files;
 }
 
 

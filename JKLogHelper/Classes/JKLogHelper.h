@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 
+
+
 /**
  start monitor the log and write the log to the file
  */
@@ -55,6 +57,9 @@ thanks the author Lefe_x https://weibo.com/u/5953150140
 @return log
 */
 + (NSString *)lastCallMethod;
+
+/// the array of fileName
++ (NSArray *)files;
 
 @end
 

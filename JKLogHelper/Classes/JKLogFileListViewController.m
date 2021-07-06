@@ -48,7 +48,7 @@
 }
 
 - (void)configDatas{
-    self.datas = [JKLogHelper getLogFiles];
+    self.datas = [JKLogHelper files];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datas.count;
@@ -68,9 +68,8 @@
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"分享" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * selectedIndexPath) {
         NSString *fileName = [self.datas objectAtIndex:indexPath.row];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@",[JKLogHelper folderPath],fileName];
-        
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[NSString stringWithFormat:@"file://%@",filePath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@.log",[JKLogHelper folderPath],fileName];
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
         UIActivityViewController *activityController=[[UIActivityViewController alloc] initWithActivityItems:@[data] applicationActivities:nil];
         activityController.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
             if (completed) {
