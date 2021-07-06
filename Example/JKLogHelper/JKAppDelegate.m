@@ -17,6 +17,8 @@
 {
     NSLog(@"%@",JKSandBoxPathDocument);
     [JKLogHelper start];
+    
+    NSLog(@"hahah");
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     JKViewController *vc = [JKViewController new];

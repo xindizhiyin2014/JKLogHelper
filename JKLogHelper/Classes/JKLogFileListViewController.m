@@ -100,7 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *fileName = [self.datas objectAtIndex:indexPath.row];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[JKLogHelper folderPath],fileName];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.log",[JKLogHelper folderPath],fileName];
     JKLogViewController *logVC = [JKLogViewController new];
     logVC.filePath = filePath;
     logVC.title = fileName;

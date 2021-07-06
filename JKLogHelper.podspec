@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKLogHelper'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'this is a log file check search tool.'
 
 # This description is used to generate tags and improve search results.
