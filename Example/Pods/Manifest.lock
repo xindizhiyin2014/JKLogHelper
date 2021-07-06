@@ -1,9 +1,10 @@
 PODS:
-  - JKDateHelper (0.1.1)
+  - JKDateHelper (0.1.2):
+    - JKSandBoxManager
   - JKLogHelper (0.1.1):
     - JKDateHelper
     - JKSandBoxManager
-  - JKSandBoxManager (0.1.6.4)
+  - JKSandBoxManager (0.1.6.8)
   - Kiwi (3.0.0)
 
 DEPENDENCIES:
@@ -11,7 +12,7 @@ DEPENDENCIES:
   - Kiwi
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - JKDateHelper
     - JKSandBoxManager
     - Kiwi
@@ -21,11 +22,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JKDateHelper: 174b1cbe7d4959bc3dd8a3abbd0b2ac34e062ee5
+  JKDateHelper: ce6cac8b4c7b04861289d80a01fcc2d454ed0f9d
   JKLogHelper: 8669e5d5acfd62c21b82877030ecb298e1d31b73
-  JKSandBoxManager: 82c9f56f87f0093dd010348748e11bbe88384794
+  JKSandBoxManager: ddae7b1426ceebb9ae5b5cd888f81570b4fae31f
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
 
 PODFILE CHECKSUM: 94bd397700106f2fb19517a3eca995e1e6b77aa0
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.10.1
